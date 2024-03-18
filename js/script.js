@@ -3,13 +3,14 @@ const gridContainer = document.querySelector('#container');
 //al click del bottone play data la difficoltà creo la griglia desiderata
 const playButton = document.querySelector('#play');
 const bombsArray = [];
-
+const freeBlock = [];
 let randomBombs ;
 let blockNumbers;
 //interruttore gioco
 let playState;
 playButton.addEventListener('click', function() {
     playState = 'playing';
+    let points = 0;
     //generazione bombe da pusciare nell'array senza duplicati
     
     gridContainer.innerHTML = '';
@@ -22,6 +23,8 @@ playButton.addEventListener('click', function() {
         
     } else {
         blockNumbers = 49;
+        }
+        
         
         for(let i = 0; i < 16; i++){
             randomBombs= Math.floor(Math.random() * blockNumbers) + 1;
@@ -35,9 +38,7 @@ playButton.addEventListener('click', function() {
             }
             console.log(bombsArray);
 
-
-
-    }
+    
     for(let i=1; i <= blockNumbers; i++) {
         const newBlock = generateBlock(i, bombsArray);
 
@@ -56,8 +57,14 @@ playButton.addEventListener('click', function() {
         
         newBlock.addEventListener('click', function() {
             //controllo numero nella blacklist
+            points++
+            console.log(points)
                 if (bombsArray.includes(i)){
                     this.innerHTML = 'hai perso';
+                    gridContainer.innerHTML = '';
+                    alert('hai perso')
+                    alert(points - 1);
+                    
                 }
                 newBlock.classList.add('blue');
 
@@ -66,6 +73,7 @@ playButton.addEventListener('click', function() {
     
     
 });
+    //ciclo win
 
 
 
