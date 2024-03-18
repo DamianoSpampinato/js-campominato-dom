@@ -5,6 +5,8 @@ const playButton = document.querySelector('#play');
 const bombsArray = [];
 let randomBombs ;
 let blockNumbers;
+//interruttore gioco
+let playState = 'playing';
 playButton.addEventListener('click', function() {
     //generazione bombe da pusciare nell'array senza duplicati
     for(let i = 0; i < 16; i++){
@@ -35,7 +37,7 @@ playButton.addEventListener('click', function() {
 
     }
     for(let i=1; i <= blockNumbers; i++) {
-        const newBlock = generateBlock(i);
+        const newBlock = generateBlock(i, bombsArray);
 
         if (blockNumbers === 100){
             newBlock.classList.add('dif-easy');
@@ -46,6 +48,7 @@ playButton.addEventListener('click', function() {
             newBlock.classList.add('dif-hard');
 
         }
+
          //appendo i blocchi con le apposite classi
         gridContainer.append(newBlock);
     }
@@ -59,12 +62,18 @@ playButton.addEventListener('click', function() {
 
 
 //creo funzione che crea i blocchi
-function generateBlock(number){
+function generateBlock(number, blackListArray, playState){
     const newBlock = document.createElement('div');
     newBlock.classList.add('block');
     newBlock.innerHTML = `<span>${number}</span>`;
     //aggiungo evento click sul blocco
     newBlock.addEventListener('click', function() {
+    //aggiungo ciclo while per interrompere la partita
+    //controllo numero nella blacklist
+    if (blackListArray.includes(number)){
+        this.innerHTML = 'hai perso';
+        playState = stopped;
+    }
     newBlock.classList.add('blue');
     console.log(number);
 
