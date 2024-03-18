@@ -8,16 +8,16 @@ let blockNumbers;
 playButton.addEventListener('click', function() {
     //generazione bombe da pusciare nell'array senza duplicati
     for(let i = 0; i < 16; i++){
-    randomBombs= Math.floor(Math.random() * 16) + 1;
-    console.log(randomBombs);
-    if(!bombsArray.includes(randomBombs)){
-        bombsArray.push(randomBombs)
-    }else {
-        i--;
-    }
-
-    }
-    console.log(bombsArray);
+        randomBombs= Math.floor(Math.random() * 16) + 1;
+        console.log(randomBombs);
+        if(!bombsArray.includes(randomBombs)){
+            bombsArray.push(randomBombs)
+        }else {
+            i--;
+        }
+    
+        }
+        console.log(bombsArray);
 
     gridContainer.innerHTML = '';
     let difficultSelector = document.querySelector('#difficult').value;
