@@ -7,9 +7,9 @@ const freeBlock = [];
 let randomBombs ;
 let blockNumbers;
 //interruttore gioco
-let playState;
+
 playButton.addEventListener('click', function() {
-    playState = 'playing';
+
     let points = 0;
     //generazione bombe da pusciare nell'array senza duplicati
     
@@ -54,6 +54,7 @@ playButton.addEventListener('click', function() {
 
          //appendo i blocchi con le apposite classi
         gridContainer.append(newBlock);
+
         
         newBlock.addEventListener('click', function() {
             //controllo numero nella blacklist
@@ -85,7 +86,7 @@ playButton.addEventListener('click', function() {
 
 
 //creo funzione che crea i blocchi
-function generateBlock(number, blackListArray, playState)
+function generateBlock(number,)
 {
     const newBlock = document.createElement('div');
     newBlock.classList.add('block');
