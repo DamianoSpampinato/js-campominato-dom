@@ -67,8 +67,11 @@ playButton.addEventListener('click', function() {
                     
                 }
                 newBlock.classList.add('blue');
-
+                if(points === blockNumbers - 16){
+                    alert('hai vinto')
+                }
             });
+            console.log(bombsArray)
     }
     
     
