@@ -20,7 +20,7 @@ playButton.addEventListener('click', function() {
     
         }
         console.log(bombsArray);
-
+    playState = 'playing'
     gridContainer.innerHTML = '';
     let difficultSelector = document.querySelector('#difficult').value;
     if (difficultSelector === 'easy') {
@@ -69,14 +69,16 @@ function generateBlock(number, blackListArray, playState){
     //aggiungo evento click sul blocco
     newBlock.addEventListener('click', function() {
     //aggiungo ciclo while per interrompere la partita
+    while(playState === 'playing'){
     //controllo numero nella blacklist
-    if (blackListArray.includes(number)){
-        this.innerHTML = 'hai perso';
-        playState = stopped;
+        if (blackListArray.includes(number)){
+            this.innerHTML = 'hai perso';
+            alert('Ritenta')
+            playState = stopped;
+        }
+        newBlock.classList.add('blue');
+        console.log(number);
     }
-    newBlock.classList.add('blue');
-    console.log(number);
-
     });
     return newBlock;
 }
