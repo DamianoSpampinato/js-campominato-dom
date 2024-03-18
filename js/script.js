@@ -76,7 +76,7 @@ playButton.addEventListener('click', function() {
     
     
 });
-    //ciclo win
+
 
 
 
